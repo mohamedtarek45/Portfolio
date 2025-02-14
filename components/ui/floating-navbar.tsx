@@ -1,4 +1,5 @@
 "use client";
+
 import React, { JSX, useRef, useState } from "react";
 import {
   motion,
@@ -8,7 +9,6 @@ import {
 } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-
 export const FloatingNav = ({
   navItems,
   className,
@@ -93,6 +93,7 @@ export const FloatingNav = ({
           className
         )}
       >
+        
         {navItems.map((navItem: any, idx: number) => (
           <Link
             key={`link=${idx}`}
