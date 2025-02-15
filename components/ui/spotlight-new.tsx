@@ -1,6 +1,9 @@
 "use client";
 import React from "react";
-import { motion } from "motion/react";
+import dynamic from "next/dynamic";
+
+const MotionDiv = dynamic(() => import("framer-motion").then((mod) => mod.motion.div), { ssr: false });
+
 
 type SpotlightProps = {
   gradientFirst?: string;
@@ -26,7 +29,7 @@ export const Spotlight = ({
   xOffset = 100,
 }: SpotlightProps = {}) => {
   return (
-    <motion.div
+    <MotionDiv
       initial={{
         opacity: 0,
       }}
@@ -38,7 +41,7 @@ export const Spotlight = ({
       }}
       className="pointer-events-none absolute inset-0 h-full w-full"
     >
-      <motion.div
+      <MotionDiv
         animate={{
           x: [0, xOffset, 0],
         }}
@@ -79,9 +82,9 @@ export const Spotlight = ({
           }}
           className={`absolute top-0 left-0 origin-top-left`}
         />
-      </motion.div>
+      </MotionDiv>
 
-      <motion.div
+      <MotionDiv
         animate={{
           x: [0, -xOffset, 0],
         }}
@@ -122,7 +125,7 @@ export const Spotlight = ({
           }}
           className={`absolute top-0 right-0 origin-top-right`}
         />
-      </motion.div>
-    </motion.div>
+      </MotionDiv>
+    </MotionDiv>
   );
 };

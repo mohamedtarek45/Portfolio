@@ -3,7 +3,8 @@ import { cn } from "@/lib/utils";
 import { BackgroundGradientAnimation } from "./background-gradient-animation";
 
 import CopyEmailAddress from "../CopyEmailAddress";
-import { GlobeDemo } from "./gridGlobe";
+// import { GlobeDemo } from "./gridGlobe";
+import Image from "next/image";
 
 export const BentoGrid = ({
   className,
@@ -60,7 +61,11 @@ export const BentoGridItem = ({
       <div className={`${id === 6 && "flex justify-center"}  h-full`}>
         <div className="w-full h-full absolute">
           {img && (
-            <img
+            <Image
+              fill
+              alt="hero"
+              priority
+              quality={22}
               src={img}
               className={cn(imgClassName, "object-cover , object-center")}
             />
@@ -72,7 +77,9 @@ export const BentoGridItem = ({
           } absolute right-0 -bottom-5`}
         >
           {spareImg && (
-            <img
+            <Image
+              fill
+              alt="hero"
               src={spareImg}
               className={cn("object-cover , object-center , w-full ,h-full")}
             />
@@ -98,7 +105,7 @@ export const BentoGridItem = ({
           <div className="font-sans font-bold text-lg lg:text-3xl max-w-96 z-10">
             {title}
           </div>
-          {id === 2 && <GlobeDemo />}
+          {/* {id === 2 && <GlobeDemo />} */}
           {id === 3 && (
             <div className="flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:right-[30px] lg:opacity-50">
               <div className="flex flex-col gap-3 ">

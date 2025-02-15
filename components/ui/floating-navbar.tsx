@@ -1,14 +1,17 @@
 "use client";
+import dynamic from "next/dynamic";
 
 import React, { JSX, useRef, useState } from "react";
 import {
-  motion,
-  AnimatePresence,
   useScroll,
   useMotionValueEvent,
 } from "framer-motion";
+
+const MotionDiv = dynamic(() => import("framer-motion").then((mod) => mod.motion.div), { ssr: false });
+const AnimatePresence = dynamic(() => import("framer-motion").then((mod) => mod.AnimatePresence), { ssr: false });
+const Link = dynamic(() => import("next/link"), { ssr: false });
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+
 export const FloatingNav = ({
   navItems,
   className,
@@ -68,7 +71,7 @@ export const FloatingNav = ({
 
   return (
     <AnimatePresence mode="wait">
-      <motion.div
+      <MotionDiv
         onMouseEnter={() => (isHovering.current = true)}
         onMouseLeave={() => {
           console.log(timeoutRef);
@@ -106,7 +109,7 @@ export const FloatingNav = ({
             <span className="hidden sm:block text-sm">{navItem.name}</span>
           </Link>
         ))}
-      </motion.div>
+      </MotionDiv>
     </AnimatePresence>
   );
 };

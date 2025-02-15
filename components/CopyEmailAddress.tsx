@@ -1,8 +1,16 @@
 "use client";
-import { TbClipboardCopy } from "react-icons/tb";
-import { TbCopyCheckFilled } from "react-icons/tb";
+import dynamic from "next/dynamic";
 import { useState } from "react";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+const TbClipboardCopy = dynamic(() => import("react-icons/tb").then((mod) => mod.TbClipboardCopy), {
+  ssr: false,
+});
+const TbCopyCheckFilled = dynamic(() => import("react-icons/tb").then((mod) => mod.TbCopyCheckFilled), {
+  ssr: false,
+});
+const DotLottieReact= dynamic(() => import("@lottiefiles/dotlottie-react").then((mod) => mod.DotLottieReact), {
+  ssr: false,
+});
+
 
 const CopyEmailAddress = () => {
   const [copied, setCopied] = useState(false);

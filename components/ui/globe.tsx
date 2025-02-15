@@ -1,11 +1,12 @@
 "use client";
-import { useEffect, useRef } from "react";
+import {  useCallback, useEffect, useRef } from "react";
 import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from "three";
 import ThreeGlobe from "three-globe";
-import { useThree, Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
+import dynamic from "next/dynamic";
+const Canvas = dynamic(() => import("@react-three/fiber").then((mod) => mod.Canvas), { ssr: false });
+const OrbitControls = dynamic(() => import("@react-three/drei").then((mod) => mod.OrbitControls), { ssr: false });
 import countries from "@/data/globe.json";
-
 
 const aspect = 1.2;
 const cameraZ = 300;
@@ -55,15 +56,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
   const globeRef = useRef<ThreeGlobe | null>(null);
   const { scene } = useThree();
 
-  useEffect(() => {
-    if (!globeRef.current) {
-      globeRef.current = new ThreeGlobe();
-      scene.add(globeRef.current);
-      buildGlobe();
-    }
-  }, [scene]);
-
-  const buildGlobe = () => {
+  const buildGlobe = useCallback(() => {
     if (!globeRef.current) return;
 
     const globeMaterial = globeRef.current.globeMaterial() as unknown as {
@@ -85,7 +78,9 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .showAtmosphere(globeConfig.showAtmosphere || true)
       .atmosphereColor(globeConfig.atmosphereColor || "#ffffff")
       .atmosphereAltitude(globeConfig.atmosphereAltitude || 0.1)
-      .hexPolygonColor(() => globeConfig.polygonColor || "rgba(255,255,255,0.7)");
+      .hexPolygonColor(
+        () => globeConfig.polygonColor || "rgba(255,255,255,0.7)"
+      );
 
     globeRef.current
       .arcsData(data)
@@ -93,8 +88,26 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .arcDashLength(globeConfig.arcLength || 0.9)
       .arcDashGap(15)
       .arcDashAnimateTime(globeConfig.arcTime || 2000);
-  };
-
+  }, [
+    data,
+    globeConfig.arcLength,
+    globeConfig.arcTime,
+    globeConfig.atmosphereAltitude,
+    globeConfig.atmosphereColor,
+    globeConfig.emissive,
+    globeConfig.emissiveIntensity,
+    globeConfig.globeColor,
+    globeConfig.polygonColor,
+    globeConfig.shininess,
+    globeConfig.showAtmosphere,
+  ]);
+  useEffect(() => {
+    if (!globeRef.current) {
+      globeRef.current = new ThreeGlobe();
+      scene.add(globeRef.current);
+      buildGlobe();
+    }
+  }, [buildGlobe, scene]);
   return null;
 }
 
@@ -105,7 +118,7 @@ export function WebGLRendererConfig() {
     gl.setPixelRatio(window.devicePixelRatio);
     gl.setSize(size.width, size.height);
     gl.setClearColor(0xffaaff, 0);
-  }, []);
+  }, [gl, size.height, size.width]);
 
   return null;
 }
@@ -118,7 +131,10 @@ export function World(props: WorldProps) {
   return (
     <Canvas scene={scene} camera={new PerspectiveCamera(50, aspect, 180, 1800)}>
       <WebGLRendererConfig />
-      <ambientLight color={globeConfig.ambientLight || "#ffffff"} intensity={0.6} />
+      <ambientLight
+        color={globeConfig.ambientLight || "#ffffff"}
+        intensity={0.6}
+      />
       <directionalLight
         color={globeConfig.directionalLeftLight || "#ffffff"}
         position={new Vector3(-400, 100, 400)}

@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 export const InfiniteMovingCards = ({
   items,
@@ -20,29 +20,11 @@ export const InfiniteMovingCards = ({
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
 
-  useEffect(() => {
-    addAnimation();
-  }, []);
-  const [start, setStart] = useState(false);
-  function addAnimation() {
-    if (containerRef.current && scrollerRef.current) {
-      const scrollerContent = Array.from(scrollerRef.current.children);
-      //important
-      const fragment = document.createDocumentFragment();
-
-      scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true);
-        fragment.appendChild(duplicatedItem);
-      });
-      scrollerRef.current.appendChild(fragment);
   
-      console.log("scrollerRef.current", scrollerRef.current);
-      getDirection();
-      getSpeed();
-      setStart(true);
-    }
-  }
-  const getDirection = () => {
+
+  const [start, setStart] = useState(false);
+
+  const getDirection =useCallback( () => {
     if (containerRef.current) {
       if (direction === "left") {
         containerRef.current.style.setProperty(
@@ -56,8 +38,8 @@ export const InfiniteMovingCards = ({
         );
       }
     }
-  };
-  const getSpeed = () => {
+  }, [containerRef, direction]);
+  const getSpeed =useCallback( () => {
     if (containerRef.current) {
       if (speed === "fast") {
         containerRef.current.style.setProperty("--animation-duration", "20s");
@@ -67,7 +49,28 @@ export const InfiniteMovingCards = ({
         containerRef.current.style.setProperty("--animation-duration", "80s");
       }
     }
-  };
+  }, [containerRef, speed]);
+  const addAnimation = useCallback(() => {
+    if (containerRef.current && scrollerRef.current) {
+      const scrollerContent = Array.from(scrollerRef.current.children);
+      // مهم
+      const fragment = document.createDocumentFragment();
+  
+      scrollerContent.forEach((item) => {
+        const duplicatedItem = item.cloneNode(true);
+        fragment.appendChild(duplicatedItem);
+      });
+      scrollerRef.current.appendChild(fragment);
+  
+      console.log("scrollerRef.current", scrollerRef.current);
+      getDirection();
+      getSpeed();
+      setStart(true);
+    }
+  }, [containerRef, scrollerRef, getDirection, getSpeed, setStart]);
+  useEffect(() => {
+    addAnimation();
+  }, [addAnimation]);
   return (
     <div
       ref={containerRef}
