@@ -5,10 +5,10 @@ import { FaLinkedin } from "react-icons/fa";
 import Button from "./Button";
 const Footer = () => {
   return (
-    <div id="contact" className="h-[25rem] max-w-screen dark:bg-black-100 bg-white  dark:bg-grid-white/[0.03] bg-grid-black/[0.2] relative flex items-center justify-center overflow-hidden ">
+    <div id="contact" className="h-[27rem] max-w-screen dark:bg-black-100 bg-white  dark:bg-grid-white/[0.03] bg-grid-black/[0.2] relative flex items-center justify-center overflow-hidden ">
       <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
       <div className="flex flex-col h-full justify-between items-center" id="footer">
-        <div className="flex flex-col items-center ">
+        <div className="flex flex-col items-center " data-aos="zoom-in-up">
           <p className="  w-[91vw] text-[36px] text-center font-inter font-bold md:w-[720px] md:text-[48px]">
             Ready to take <span className="text-[#CBACF9] "> your</span> digital
             presence to the next level?
@@ -20,7 +20,7 @@ const Footer = () => {
           <Button className=" mt-5 text-center" />
         </div>
   
-        <div className="mb-10 flex gap-6">
+        <div className="mb-[50px] flex gap-4 items-center justify-center">
           <a
             href="https://www.facebook.com/mohamed.tarek.mohamed.youssef"
             target="_blank"

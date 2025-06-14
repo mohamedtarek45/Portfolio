@@ -1,4 +1,3 @@
-
 import { cn } from "@/lib/utils";
 import { BackgroundGradientAnimation } from "./background-gradient-animation";
 
@@ -26,6 +25,7 @@ export const BentoGrid = ({
 };
 
 export const BentoGridItem = ({
+  dataAos,
   className,
   title,
   description,
@@ -35,6 +35,7 @@ export const BentoGridItem = ({
   imgClassName,
   id,
 }: {
+  dataAos: string;
   className?: string;
   title?: string | React.ReactNode;
   description?: string | React.ReactNode;
@@ -46,13 +47,12 @@ export const BentoGridItem = ({
 }) => {
   return (
     <div
+      data-aos={dataAos}
       className={cn(
         "row-span-1 relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4",
         className
       )}
       style={{
-        //   add these two
-        //   you can generate the color from here https://cssgradient.io/
         background: "rgb(4,7,29)",
         backgroundColor:
           "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
@@ -64,7 +64,7 @@ export const BentoGridItem = ({
             <Image
               fill
               alt="hero"
-              priority={id===1}
+              priority={id === 1}
               src={img}
               className={cn(imgClassName, "object-cover , object-center")}
             />
@@ -86,8 +86,7 @@ export const BentoGridItem = ({
         </div>
         {id === 6 && (
           // add background animation , remove the p tag
-
-          <div className="absolute ">
+          <div className="absolute " >
             <BackgroundGradientAnimation></BackgroundGradientAnimation>
           </div>
         )}
@@ -118,7 +117,7 @@ export const BentoGridItem = ({
                 ))}
                 <span className="py-4 px-3  rounded-lg text-center bg-[#10132e]"></span>
               </div>
-              <div className="flex flex-col gap-3 ">
+              <div className="flex flex-col gap-3">
                 <span className="py-4 px-3  rounded-lg text-center bg-[#10132e]"></span>
                 {["mongoDB", "Tailwind", "Express"].map((item, idx) => (
                   <span

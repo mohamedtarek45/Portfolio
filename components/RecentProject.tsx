@@ -8,7 +8,10 @@ const RecentProject = () => {
         Let&apos;s take a look at the{" "}
         <span className="text-purple">recent projects</span>
       </h1>
-      <div className="flex flex-col md:flex-row md:flex-wrap items-center justify-center py-4 gap-6 mt-10">
+      <div
+        className="flex flex-col md:flex-row md:flex-wrap items-center justify-center py-4 gap-6 mt-10"
+
+      >
         {projects.map((item, index) => {
           if (index % 2 === 0) {
             return (

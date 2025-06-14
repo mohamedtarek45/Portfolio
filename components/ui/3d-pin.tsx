@@ -31,6 +31,7 @@ export const PinContainer = ({
 
   return (
     <Link
+      data-aos="fade-left"
       target="_blank"
       rel="noopener noreferrer"
       className={cn(

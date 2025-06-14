@@ -45,7 +45,7 @@ const FloatCard = ({
     );
   }
   return (
-    <Link href={link || "/"}  target="_blank" rel="noopener noreferrer">
+    <Link href={link || "/"}  target="_blank" rel="noopener noreferrer" data-aos="fade-right">
       <CardContainer
         className="inter-var relative "
       >
