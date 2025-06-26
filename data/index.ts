@@ -74,7 +74,15 @@ export const projects = [
     link: "https://food-project-frontend-iota.vercel.app/",
   },
   {
-    id: 2,
+    id:2,
+    title: "Live Chat",
+    des : "Live Chat is a real-time chat app where you log in securely with JWT, search for friends, and start chatting instantly. It supports sending messages, images, and videos, and lets you see who's currently online. The app is fully responsive and supports both dark and light modes",
+    img: "/P5.svg",
+    iconLists: ["/re.svg","/tail.svg","/shadcn.svg","./nodejs.svg","./rest-api.svg","./typescript.svg","./mongodb.svg","./auth0.svg","./stripe.svg","./cloudinary.svg" ,"/re.svg","/tail.svg","/shadcn.svg","./nodejs.svg","./rest-api.svg","./typescript.svg","./mongodb.svg","./auth0.svg","./stripe.svg","./cloudinary.svg"  ],
+    link: "https://chat-app-next-delta.vercel.app/",
+  },
+  {
+    id: 3,
     title: "Quick Chat",
     des: "QuickChat is a real-time chat application built with Next.js and Socket.io. It allows users to join chat rooms by entering  their name and room number. Once inside, they can send and receive messages instantly with others in the same room. The platform is designed for seamless and interactive communication, making it easy for multiple users to chat together",
     img: "/p2.svg",
@@ -82,7 +90,7 @@ export const projects = [
     link: "https://quickcaht.vercel.app/",
   },
   {
-    id: 3,
+    id: 4,
     title: "Place share",
     des: "A web application where users can share places they’ve visited and liked by adding reviews, images, and the location displayed on a map. Only authenticated users can create and share places, ensuring content integrity. Regular users can browse the shared locations and read reviews without needing to log in, making it accessible for everyone to explore recommended spots",
     img: "/p3.svg",
@@ -90,7 +98,7 @@ export const projects = [
     link: "https://place-share-client-five.vercel.app/",
   },
   {
-    id: 4,
+    id: 5,
     title: "Tic-Tac-Toe Game",
     des: "Developed a responsive web-based Tic-Tac-Toe game using React, CSS, and JavaScript, optimized for seamless play on various devices",
     img: "/p4.svg",
