@@ -70,7 +70,7 @@ export const projects = [
     title: "Let's Make Order",
     des: "A full-stack web application for a food ordering system where users can select and order food from various restaurants,  make payments securely using Visa, and track the status of their orders from payment to delivery. The platform includes authorization to ensure secure access for both users and restaurant owners. Additionally, restaurant owners can add their restaurant to the platform, create a custom menu for it, view incoming orders, and update their statuses in realtime to ensure smooth operations and customer satisfactions. ",
     img: "/p1.svg",
-    iconLists: ["/re.svg","/tail.svg","/shadcn.svg","./nodejs.svg","./rest-api.svg","./typescript.svg","./mongodb.svg","./auth0.svg","./stripe.svg","./cloudinary.svg" ,"/re.svg","/tail.svg","/shadcn.svg","./nodejs.svg","./rest-api.svg","./typescript.svg","./mongodb.svg","./auth0.svg","./stripe.svg","./cloudinary.svg"  ],
+    iconLists: ["/re.svg","/redux.svg","/tail.svg","/shadcn.svg","./nodejs.svg","./rest-api.svg","./typescript.svg","./mongodb.svg","./auth0.svg","./stripe.svg","./cloudinary.svg" ,"/re.svg",,"/redux.svg","/tail.svg","/shadcn.svg","./nodejs.svg","./rest-api.svg","./typescript.svg","./mongodb.svg","./auth0.svg","./stripe.svg","./cloudinary.svg"  ],
     link: "https://food-project-frontend-iota.vercel.app/",
   },
   {
@@ -78,7 +78,7 @@ export const projects = [
     title: "Live Chat",
     des : "Live Chat is a real-time chat app where you log in securely with JWT, search for friends, and start chatting instantly. It supports sending messages, images, and videos, and lets you see who's currently online. The app is fully responsive and supports both dark and light modes",
     img: "/P5.svg",
-    iconLists: ["/re.svg","/tail.svg","/shadcn.svg","./nodejs.svg","./rest-api.svg","./typescript.svg","./mongodb.svg","./auth0.svg","./stripe.svg","./cloudinary.svg" ,"/re.svg","/tail.svg","/shadcn.svg","./nodejs.svg","./rest-api.svg","./typescript.svg","./mongodb.svg","./auth0.svg","./stripe.svg","./cloudinary.svg"  ],
+    iconLists: ["/next.svg","./socketio.svg","./nodejs.svg","./jwt.svg","/Zustand.svg","/tail.svg","/shadcn.svg","./mongodb.svg","./cloudinary.svg"  ],
     link: "https://chat-app-next-delta.vercel.app/",
   },
   {
