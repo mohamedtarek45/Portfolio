@@ -84,7 +84,7 @@ export const projects = [
   {
     id: 3,
     title: "Quick Chat",
-    des: "QuickChat is a real-time chat application built with Next.js and Socket.io. It allows users to join chat rooms by entering  their name and room number. Once inside, they can send and receive messages instantly with others in the same room. The platform is designed for seamless and interactive communication, making it easy for multiple users to chat together",
+    des: "Quick Chat is a lightweight version of Live Chat that allows users to join chat rooms instantly without accounts or saved data — perfect for quick, temporary conversations.",
     img: "/p2.svg",
     iconLists: ["/next.svg", "/tail.svg", "/typescript.svg", "./socketio.svg"],
     link: "https://quickcaht.vercel.app/",
